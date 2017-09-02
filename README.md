@@ -1,9 +1,2 @@
-echo "# springboot-druid" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:devtanjun/springboot-druid.git
-git push -u origin master
-
-
-vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+spring boot + druid+ fastjson
+单数据源-多数据源-分布式事务处理
