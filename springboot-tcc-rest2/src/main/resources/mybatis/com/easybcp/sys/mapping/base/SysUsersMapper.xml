@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easybcp.sys.dao.base.SysUsersMapper">
+	<resultMap id="BaseResultMap" type="com.easybcp.sys.model.SysUsers">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="userName" property="username" jdbcType="VARCHAR" />
+		<result column="passWord" property="password" jdbcType="VARCHAR" />
+		<result column="userSex" property="usersex" jdbcType="VARCHAR" />
+		<result column="nickName" property="nickname" jdbcType="VARCHAR" />
+		<result column="AgentDeadline" property="agentdeadline"
+			jdbcType="DATE" />
+		<result column="CreatedDatetime" property="createddatetime"
+			jdbcType="TIMESTAMP" />
+		<result column="UpdatedDatetime" property="updateddatetime"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from users
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.easybcp.sys.model.SysUsers">
+		insert into users (id, userName, passWord,
+		userSex, nickName, AgentDeadline,
+		CreatedDatetime, UpdatedDatetime)
+		values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{usersex,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{agentdeadline,jdbcType=DATE},
+		#{createddatetime,jdbcType=TIMESTAMP},
+		#{updateddatetime,jdbcType=TIMESTAMP})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="com.easybcp.sys.model.SysUsers">
+		update users
+		set userName = #{username,jdbcType=VARCHAR},
+		passWord = #{password,jdbcType=VARCHAR},
+		userSex = #{usersex,jdbcType=VARCHAR},
+		nickName = #{nickname,jdbcType=VARCHAR},
+		AgentDeadline = #{agentdeadline,jdbcType=DATE},
+		CreatedDatetime = #{createddatetime,jdbcType=TIMESTAMP},
+		UpdatedDatetime = #{updateddatetime,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select id, userName, passWord, userSex, nickName, AgentDeadline,
+		CreatedDatetime,
+		UpdatedDatetime
+		from users
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select id, userName, passWord, userSex, nickName, AgentDeadline,
+		CreatedDatetime,
+		UpdatedDatetime
+		from users
+	</select>
+</mapper>
